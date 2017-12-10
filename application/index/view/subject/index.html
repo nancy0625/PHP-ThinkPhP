@@ -1,0 +1,90 @@
+{include file="base" /} 
+<div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>学生信息管理</h5>
+
+                        <div class="ibox-tools">
+                            <a class="collapse-link"> <i class="fa fa-chevron-up"></i>
+                            </a> <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <i class="fa fa-wrench"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-user">
+                                <li><a href="#">选项 01</a></li>
+                                <li><a href="#">选项 02</a></li>
+                            </ul>
+                            <a class="close-link"> <i class="fa fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <input type="text" class="form-control input-sm m-b-xs"
+                            id="filter" placeholder="搜索表格..."> <a
+                            class='btn btn-info btn-sm shiny' href='{:url("insert")}'><i
+                            class='fa fa-plus-square'> 增加科目信息</i></a>
+
+                       <table class="footable table table-stripped" data-page-size="8"
+                            data-filter=#filter>
+                                <thead>
+                                    <tr>
+                                        <th>科目编号</th>
+                                        <th>科目名称</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                              
+                                  <?php
+                                $lineno = 0;
+                                foreach($result as $row) {
+                                    $lineno ++;
+                                    $linestyle = $lineno % 2 == 1 ? "odd gradeX" : "even gradeC";
+                                    echo "<tr class='" . $linestyle . "'>";
+                                    echo "<td>" . $row ['subjectNum'] . "</td>";
+                                    echo "<td>" . $row ['subjectName'] . "</td>";
+                                    $url = url('edit',array('subjectNum'=>$row ['subjectNum']));
+                                    $delurl = url('delete',array('subjectNum'=>$row ['subjectNum']));
+                                    echo "<td><a class='btn btn-primary btn-sm shiny' href='".$url."'><i class='fa fa-edit'>&nbsp;编辑</i></a>&nbsp;&nbsp;<a class='btn btn-danger btn-sm shiny' href='" . $delurl . "'><i class='fa fa-trash-o'>&nbsp;删除</i></a></td>";
+                                    echo "</tr>";
+                                }
+                                ?>
+                             
+                                </tbody>
+                                 <tfoot>
+                                <tr>
+                                    <td colspan="5">
+                                        <ul class="pagination pull-right"></ul>
+                                    </td>
+                                </tr>
+                            </tfoot>
+
+                            </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </nav>
+
+
+    <!-- 全局js -->
+   <script src="/student/public/static/js/jquery.min.js?v=2.1.4"></script>
+    <script src="/student/public/static/js/bootstrap.min.js?v=3.3.6"></script>
+    <script src="/student/public/static/js/plugins/footable/footable.all.min.js"></script>
+
+    <!-- 自定义js -->
+    <script src="/student/public/static/js/content.js?v=1.0.0"></script>
+    <script>
+        $(document).ready(function() {
+
+            $('.footable').footable();
+            $('.footable2').footable();
+
+        });
+
+    </script>
+
+    </body>
+    </html>
