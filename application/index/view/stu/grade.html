@@ -4,7 +4,7 @@
 	<div id="page-inner">
 		<div class="row">
 			<div class="col-md-12">
-				<h2>添加学生成绩信息</h2>
+				<h2>查询所有成绩信息</h2>
 			</div>
 		</div>
 		<!-- /. ROW  -->
@@ -14,33 +14,20 @@
 				<!-- class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1"> -->
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<strong> 添加成绩信息 </strong>
+						<strong> 查询所有科目成绩信息 </strong>
 					</div>
 					<div class="panel-body">
-						<form role="form" action="{:url('grade/insert')}" method="post">
+						<form role="form" action="{:url('stu/grades')}" method="post">
 							<br /> 
 							<div class="form-group input-group">
-								请选择要添加成绩的学号：<select name="xh">
+								请选择要查询成绩的学号：<select name="xh">
 								{volist name='xh' id='studentId'}
 								<option value="{$studentId}">{$studentId}</option>
 								{/volist}
 								</select>
 							</div>
-							<div class="form-group input-group">
-								请选择要添加成绩的科目：<select name="subjectName">
-								{volist name='km' id='km'}
-								<option value="{$km}">{$km}</option>
-								{/volist}
-								</select>
-							</div>
-							
-							<div class="form-group input-group">
-								<span class="input-group-addon"><i class="fa fa-flag"> 成绩</i></span>
-								<input type="text" class="form-control" placeholder="成绩"
-									name='cj' value="" />
-							</div>
-							
-							<input type='submit' class="btn btn-success" value='确认添加' />
+						
+							<input type='submit' class="btn btn-success" value='确认查询' />
 						</form>
 					</div>
 				</div>

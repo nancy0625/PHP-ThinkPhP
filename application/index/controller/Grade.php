@@ -63,12 +63,29 @@ class Grade extends \think\Controller
     }
     
     public function insert(){
+        $subject = new \app\index\model\Subject();
+        $student = new \app\index\model\Student();
+        $stu = $student->column('studentId');
+        $km = $subject->column('subjectName');
+         $this->assign('xh',$stu);
+         $this->assign('km', $km);
+       
+
+
+
+        
         //表单处理
         if(request()->isPost()){
-            //取出数据
-            $data = input('post.');
             $grade = new \app\index\model\Grade();
-            $result = $grade->allowField(true)->save($data);
+            $sub = new \app\index\model\Subject();
+            $km = input('post.subjectName');
+            $subjectNum = $sub->where("subjectName = '$km' ")->column('subjectNum');
+            
+            $grade->xh=\think\Request::instance()->post('xh');
+            $grade->subjectNum=$subjectNum[0];
+            $grade->cj=input('post.cj');
+           $result =  $grade->save();
+            
             if($result){
                 $this->success("数据保存成功！",url('grade/index'));
             }else{

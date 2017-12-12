@@ -1,0 +1,87 @@
+{include file="base" /} 
+<div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>学生信息管理</h5>
+
+                        <div class="ibox-tools">
+                            <a class="collapse-link"> <i class="fa fa-chevron-up"></i>
+                            </a> <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <i class="fa fa-wrench"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-user">
+                                <li><a href="#">选项 01</a></li>
+                                <li><a href="#">选项 02</a></li>
+                            </ul>
+                            <a class="close-link"> <i class="fa fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                       
+
+                       <table class="footable table table-stripped" data-page-size="8"
+                            data-filter=#filter>
+                                <thead>
+                                    <tr>
+                                        <th>学号</th>
+                                        <th>姓名</th>
+                                        <th>科目名称</th>
+                                        <th>成绩</th>
+                                       
+                                    </tr>
+                                </thead>
+                                <tbody>
+                             {volist name ='subject' id='row'}
+                                  <tr >
+                                  <td>{$studentId}</td>
+                                    <td>{$result.name}</td>
+                                  
+                                    <td>{$row[0]}</td>
+                                    <td>{$row[1]}</td>
+
+
+                                 
+                                 
+                                  </tr>
+                                  {/volist} 
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <td colspan="5">
+                                        <ul class="pagination pull-right"></ul>
+                                    </td>
+                                </tr>
+                            </tfoot>
+
+                            </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </nav>
+
+
+    <!-- 全局js -->
+   <script src="/student/public/static/js/jquery.min.js?v=2.1.4"></script>
+    <script src="/student/public/static/js/bootstrap.min.js?v=3.3.6"></script>
+    <script src="/student/public/static/js/plugins/footable/footable.all.min.js"></script>
+
+    <!-- 自定义js -->
+    <script src="/student/public/static/js/content.js?v=1.0.0"></script>
+    <script>
+        $(document).ready(function() {
+
+            $('.footable').footable();
+            $('.footable2').footable();
+
+        });
+
+    </script>
+    
+
+    </body>
+    </html>
